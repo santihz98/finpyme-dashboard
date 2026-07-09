@@ -127,42 +127,38 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
   )
 
   return (
-    <div className="bg-slate border border-border rounded-card p-4 overflow-hidden">
-      {/* Header */}
-      <div className="mb-3">
-        <h3 className="text-sm font-semibold text-pearl">Composición de gastos</h3>
-        <p className="text-xs text-muted mt-0.5">{mesLabel}</p>
-      </div>
+    <div className="bg-slate border border-border rounded-card p-4 flex flex-col h-full overflow-visible">
+      {/* Header — outside the flex-row so it never gets clipped */}
+      <h3 className="text-sm font-medium text-pearl mb-1">Composición de gastos</h3>
+      <p className="text-xs text-muted mb-3">{mesLabel}</p>
 
-      <div className="flex flex-row items-center gap-3">
+      <div className="flex flex-row items-center gap-4 flex-1">
         {/* Donut — fixed size, no ResponsiveContainer */}
-        <div className="shrink-0">
-          <PieChart width={160} height={160}>
-            <Pie
-              data={segments}
-              dataKey="value"
-              nameKey="label"
-              cx="50%"
-              cy="50%"
-              innerRadius={45}
-              outerRadius={70}
-              stroke="transparent"
-              strokeWidth={0}
-              paddingAngle={2}
-            >
-              {segments.map(seg => (
-                <Cell
-                  key={seg.key}
-                  fill={seg.color}
-                  stroke={isAlerta && seg.key === 'nomina' ? C.coral : 'transparent'}
-                  strokeWidth={isAlerta && seg.key === 'nomina' ? 2 : 0}
-                />
-              ))}
-              <Label content={CenterLabel as any} position="center" />
-            </Pie>
-            <Tooltip content={renderTooltip} />
-          </PieChart>
-        </div>
+        <PieChart width={160} height={160}>
+          <Pie
+            data={segments}
+            dataKey="value"
+            nameKey="label"
+            cx="50%"
+            cy="50%"
+            innerRadius={45}
+            outerRadius={70}
+            stroke="transparent"
+            strokeWidth={0}
+            paddingAngle={2}
+          >
+            {segments.map(seg => (
+              <Cell
+                key={seg.key}
+                fill={seg.color}
+                stroke={isAlerta && seg.key === 'nomina' ? C.coral : 'transparent'}
+                strokeWidth={isAlerta && seg.key === 'nomina' ? 2 : 0}
+              />
+            ))}
+            <Label content={CenterLabel as any} position="center" />
+          </Pie>
+          <Tooltip content={renderTooltip} />
+        </PieChart>
 
         {/* Legend */}
         <div className="flex flex-col gap-2 min-w-[140px]">
