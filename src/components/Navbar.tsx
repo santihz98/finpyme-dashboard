@@ -30,7 +30,7 @@ interface NavbarProps {
 
 const SELECT_CLASS = `
   appearance-none bg-slate border border-border text-pearl
-  rounded-tag text-sm pl-3 pr-8 py-2 cursor-pointer
+  rounded-tag text-sm pl-3 pr-8 py-2 cursor-pointer max-w-[140px] truncate
   hover:border-emerald/50 focus:outline-none focus:border-emerald/50
   transition-colors duration-150
 `
@@ -91,42 +91,39 @@ export default function Navbar({
     : '✦ Analizar con IA'
 
   return (
-    <nav className="bg-ink/95 backdrop-blur-sm border-b border-border shadow-sm sticky top-0 z-50">
-      {/* Desktop: single row — Mobile: two rows */}
-      <div className="max-w-screen-xl mx-auto px-6 py-3">
-        <div className="flex items-center justify-between gap-4">
+    <nav className="sticky top-0 z-50 bg-ink/95 backdrop-blur border-b border-border px-4 py-3">
+      <div className="flex items-center justify-between gap-3">
 
-          {/* ── Logo ── */}
-          <div className="flex items-center gap-2 shrink-0">
-            <span className="text-base font-bold tracking-tight">
-              <span className="text-pearl">Fin</span>
-              <span className="text-emerald">Pyme</span>
-            </span>
-            <span className="text-xs text-amber border border-amber/30 rounded-pill px-2 py-0.5 leading-tight">
-              Beta
-            </span>
-          </div>
+        {/* ── Logo ── */}
+        <div className="flex items-center gap-2 shrink-0">
+          <span className="text-base font-bold tracking-tight">
+            <span className="text-pearl">Fin</span>
+            <span className="text-emerald">Pyme</span>
+          </span>
+          <span className="text-xs text-amber border border-amber/30 rounded-pill px-2 py-0.5 leading-tight">
+            Beta
+          </span>
+        </div>
 
-          {/* ── Selectors (hidden on mobile, shown on md+) ── */}
-          <div className="hidden md:flex items-center gap-3">
-            <StyledSelect value={empresa} onChange={onEmpresaChange}>
-              {EMPRESAS.map(opt => (
-                <option key={opt.value} value={opt.value}>{opt.label}</option>
-              ))}
-            </StyledSelect>
-            <StyledSelect value={mesIndex} onChange={v => onMesChange(Number(v))}>
-              {meses.map((mes, i) => (
-                <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
-              ))}
-            </StyledSelect>
-          </div>
+        {/* ── Controls ── */}
+        <div className="flex items-center gap-2 flex-wrap justify-end">
+          <StyledSelect value={empresa} onChange={onEmpresaChange}>
+            {EMPRESAS.map(opt => (
+              <option key={opt.value} value={opt.value}>{opt.label}</option>
+            ))}
+          </StyledSelect>
 
-          {/* ── CTA button ── */}
+          <StyledSelect value={mesIndex} onChange={v => onMesChange(Number(v))}>
+            {meses.map((mes, i) => (
+              <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
+            ))}
+          </StyledSelect>
+
           <button
             onClick={handleGenerar}
             disabled={loadingAnalisis}
             className={[
-              'flex items-center gap-2 shrink-0 border rounded-pill text-sm px-5 py-2',
+              'flex items-center gap-2 shrink-0 border rounded-pill text-sm px-4 py-2',
               'transition-all duration-150',
               loadingAnalisis
                 ? 'border-emerald/20 text-emerald/40 bg-emerald/5 cursor-not-allowed'
@@ -138,21 +135,6 @@ export default function Navbar({
             )}
             {btnLabel}
           </button>
-
-        </div>
-
-        {/* ── Mobile selectors row (visible below md) ── */}
-        <div className="flex md:hidden items-center gap-2 mt-2">
-          <StyledSelect value={empresa} onChange={onEmpresaChange}>
-            {EMPRESAS.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </StyledSelect>
-          <StyledSelect value={mesIndex} onChange={v => onMesChange(Number(v))}>
-            {meses.map((mes, i) => (
-              <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
-            ))}
-          </StyledSelect>
         </div>
 
       </div>

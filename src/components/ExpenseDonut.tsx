@@ -2,12 +2,10 @@
 
 import { useMemo } from 'react'
 import {
-  ResponsiveContainer,
   PieChart,
   Pie,
   Cell,
   Tooltip,
-  Label,
 } from 'recharts'
 import type { MesData } from '@/lib/types'
 import { formatCOP } from '@/lib/utils'
@@ -88,38 +86,6 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
     return { segments, total, isAlerta: nominaPct > ALERTA_NOMINA_PCT }
   }, [gastos])
 
-  // Center label: defined via useMemo to avoid new function reference each render
-  const CenterLabel = useMemo(
-    () =>
-      function Label(props: any) {
-        // PolarViewBox passes cx/cy either directly or via viewBox
-        const cx: number = props.viewBox?.cx ?? props.cx ?? 0
-        const cy: number = props.viewBox?.cy ?? props.cy ?? 0
-        return (
-          <>
-            <text
-              x={cx} y={cy - 5}
-              textAnchor="middle"
-              fill={C.pearl}
-              fontSize={15}
-              fontWeight={700}
-            >
-              {formatCOP(total)}
-            </text>
-            <text
-              x={cx} y={cy + 12}
-              textAnchor="middle"
-              fill={C.muted}
-              fontSize={11}
-            >
-              Gastos
-            </text>
-          </>
-        )
-      },
-    [total],
-  )
-
   const renderTooltip = useMemo(
     () => (props: object) =>
       <CustomTooltip {...(props as { active?: boolean; payload?: { payload: Segment }[] })} />,
@@ -134,7 +100,7 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
 
       <div className="flex flex-row items-center gap-4 flex-1">
         {/* Donut — fixed size, no ResponsiveContainer */}
-        <PieChart width={160} height={160}>
+        <PieChart width={160} height={160} style={{ overflow: 'visible' }}>
           <Pie
             data={segments}
             dataKey="value"
@@ -146,6 +112,8 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
             stroke="transparent"
             strokeWidth={0}
             paddingAngle={2}
+            label={false}
+            labelLine={false}
           >
             {segments.map(seg => (
               <Cell
@@ -155,7 +123,6 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
                 strokeWidth={isAlerta && seg.key === 'nomina' ? 2 : 0}
               />
             ))}
-            <Label content={CenterLabel as any} position="center" />
           </Pie>
           <Tooltip content={renderTooltip} />
         </PieChart>

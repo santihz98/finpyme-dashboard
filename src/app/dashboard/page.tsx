@@ -99,7 +99,7 @@ export default function DashboardPage() {
   // ─────────────────────────────────────────────────────────────────────────
 
   return (
-    <div className="bg-ink min-h-screen">
+    <div className="min-h-screen bg-ink">
       <Navbar
         empresa={empresa}
         onEmpresaChange={v => setEmpresa(v as EmpresaTipo)}
@@ -110,7 +110,7 @@ export default function DashboardPage() {
         loadingAnalisis={loadingAnalisis}
       />
 
-      <main className="max-w-7xl mx-auto px-6 py-4 space-y-4">
+      <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-4">
 
         {/* Breadcrumb */}
         <p className="text-xs text-muted">
@@ -122,7 +122,7 @@ export default function DashboardPage() {
         </p>
 
         {/* ── KPI Grid ── */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
           <KPICard
             label="Ingresos"
             valor={formatCOP(mesActual.ingresos.total)}
@@ -156,15 +156,15 @@ export default function DashboardPage() {
         </div>
 
         {/* ── Charts Row ── */}
-        <div className="flex flex-col md:flex-row gap-4">
-          <div className="md:flex-[3] min-w-0">
+        <div className="flex flex-col lg:flex-row gap-4">
+          <div className="lg:flex-[3] min-w-0">
             <RevenueChart
               meses={data.meses}
               mesSeleccionado={safeIndex}
               onSelectMes={setMesIndex}
             />
           </div>
-          <div className="md:flex-[2] min-w-0">
+          <div className="lg:flex-[2] min-w-0">
             <ExpenseDonut gastos={mesActual.gastos} mesLabel={mesLabel} />
           </div>
         </div>
