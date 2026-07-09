@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html,
+  body {
+    @apply bg-ink text-pearl font-sans;
+  }
+
+  ::selection {
+    @apply bg-emerald/20 text-pearl;
+  }
+}
+
+/* ── Custom scrollbar — WebKit (Chrome, Safari, Edge) ── */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-ink;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-slate rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #243447; /* border */
+}
+
+/* ── Custom scrollbar — Firefox ── */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #1A2A3A #0F1923; /* slate sobre ink */
+}
