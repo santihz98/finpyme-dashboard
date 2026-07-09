@@ -1,0 +1,421 @@
+{
+  "empresa": {
+    "nombre": "Clínica Estética Vitalia S.A.S.",
+    "nit": "900.987.654-3",
+    "ciudad": "Cali",
+    "sector": "medicina_estetica_colombia"
+  },
+  "año_base": 2025,
+  "generado_en": "2026-07-09T10:05:45",
+  "anomalias_año": [],
+  "meses": [
+    {
+      "periodo": "2025-01",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 8368576.79
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 5901965.24
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 1972759.24
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2312562.1
+          }
+        ],
+        "total": 18555863.37
+      },
+      "gastos": {
+        "nomina_medica_admin": 5381936.76,
+        "insumos_materiales": 1698125.9,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1085107.22,
+        "otros": 770906.54,
+        "total": 12176076.42
+      },
+      "utilidad_neta": 6379786.95,
+      "margen_pct": 34.38
+    },
+    {
+      "periodo": "2025-02",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 11430589.04
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 6324372.74
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 2645729.57
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2206196.27
+          }
+        ],
+        "total": 22606887.62
+      },
+      "gastos": {
+        "nomina_medica_admin": 6601324.42,
+        "insumos_materiales": 2351725.57,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1164875.87,
+        "otros": 929516.67,
+        "total": 14287442.54
+      },
+      "utilidad_neta": 8319445.08,
+      "margen_pct": 36.8
+    },
+    {
+      "periodo": "2025-03",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 13979283.56
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 6542879.39
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 2947019.34
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2157728.69
+          }
+        ],
+        "total": 25626910.98
+      },
+      "gastos": {
+        "nomina_medica_admin": 7595140.48,
+        "insumos_materiales": 3203069.33,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1099576.56,
+        "otros": 1116663.41,
+        "total": 16254449.78
+      },
+      "utilidad_neta": 9372461.2,
+      "margen_pct": 36.57
+    },
+    {
+      "periodo": "2025-04",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 15913190.36
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7146473.28
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 3402569.19
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2354748.64
+          }
+        ],
+        "total": 28816981.48
+      },
+      "gastos": {
+        "nomina_medica_admin": 8693840.47,
+        "insumos_materiales": 3887047.61,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1807188.78,
+        "otros": 1201789.75,
+        "total": 18829866.61
+      },
+      "utilidad_neta": 9987114.87,
+      "margen_pct": 34.66
+    },
+    {
+      "periodo": "2025-05",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 19721455.01
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7625612.69
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 3738430.31
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2397101.37
+          }
+        ],
+        "total": 33482599.38
+      },
+      "gastos": {
+        "nomina_medica_admin": 9526788.99,
+        "insumos_materiales": 5678174.62,
+        "arriendo": 3240000.0,
+        "marketing_digital": 2774264.38,
+        "otros": 1580371.15,
+        "total": 22799599.14
+      },
+      "utilidad_neta": 10683000.24,
+      "margen_pct": 31.91
+    },
+    {
+      "periodo": "2025-06",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 24520973.8
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7881379.8
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 4685436.62
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2627366.85
+          }
+        ],
+        "total": 39715157.07
+      },
+      "gastos": {
+        "nomina_medica_admin": 12858826.44,
+        "insumos_materiales": 8116968.88,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1810287.63,
+        "otros": 4157436.43,
+        "total": 30183519.37
+      },
+      "utilidad_neta": 9531637.7,
+      "margen_pct": 24.0
+    },
+    {
+      "periodo": "2025-07",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 19955516.79
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7637514.42
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 3572448.27
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2514414.19
+          }
+        ],
+        "total": 33679893.66
+      },
+      "gastos": {
+        "nomina_medica_admin": 9651930.84,
+        "insumos_materiales": 5214848.49,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1272231.75,
+        "otros": 1719510.55,
+        "total": 21098521.63
+      },
+      "utilidad_neta": 12581372.03,
+      "margen_pct": 37.36
+    },
+    {
+      "periodo": "2025-08",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 13510356.85
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7148940.29
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 2760006.85
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2377017.42
+          }
+        ],
+        "total": 25796321.41
+      },
+      "gastos": {
+        "nomina_medica_admin": 7487167.9,
+        "insumos_materiales": 3497896.41,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1323967.77,
+        "otros": 1243719.5,
+        "total": 16792751.58
+      },
+      "utilidad_neta": 9003569.83,
+      "margen_pct": 34.9
+    },
+    {
+      "periodo": "2025-09",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 14372451.56
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 6944062.2
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 3443678.18
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2441915.31
+          }
+        ],
+        "total": 27202107.25
+      },
+      "gastos": {
+        "nomina_medica_admin": 7668787.58,
+        "insumos_materiales": 3252818.12,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1467825.86,
+        "otros": 1278866.3,
+        "total": 16908297.85
+      },
+      "utilidad_neta": 10293809.4,
+      "margen_pct": 37.84
+    },
+    {
+      "periodo": "2025-10",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 18556844.65
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7726212.59
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 3677523.83
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2594983.35
+          }
+        ],
+        "total": 32555564.41
+      },
+      "gastos": {
+        "nomina_medica_admin": 9536165.05,
+        "insumos_materiales": 4866546.68,
+        "arriendo": 3240000.0,
+        "marketing_digital": 2559362.7,
+        "otros": 1377725.44,
+        "total": 21579799.87
+      },
+      "utilidad_neta": 10975764.54,
+      "margen_pct": 33.71
+    },
+    {
+      "periodo": "2025-11",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 25088590.95
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7864712.95
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 4201500.1
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2752104.25
+          }
+        ],
+        "total": 39906908.25
+      },
+      "gastos": {
+        "nomina_medica_admin": 12580351.2,
+        "insumos_materiales": 7823140.66,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1909203.0,
+        "otros": 4776555.42,
+        "total": 30329250.27
+      },
+      "utilidad_neta": 9577657.98,
+      "margen_pct": 24.0
+    },
+    {
+      "periodo": "2025-12",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Procedimientos estéticos",
+            "valor": 28596541.77
+          },
+          {
+            "nombre": "Consultas médicas",
+            "valor": 7813590.37
+          },
+          {
+            "nombre": "Productos y suplementos",
+            "valor": 4746269.27
+          },
+          {
+            "nombre": "Membresías mensuales",
+            "valor": 2837091.75
+          }
+        ],
+        "total": 43993493.16
+      },
+      "gastos": {
+        "nomina_medica_admin": 14511419.04,
+        "insumos_materiales": 8003253.76,
+        "arriendo": 3240000.0,
+        "marketing_digital": 1331643.98,
+        "otros": 1982226.5,
+        "total": 29068543.28
+      },
+      "utilidad_neta": 14924949.88,
+      "margen_pct": 33.93
+    }
+  ]
+}

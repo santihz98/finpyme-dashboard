@@ -1,0 +1,385 @@
+{
+  "empresa": {
+    "nombre": "Sabores de la Abuela S.A.S.",
+    "nit": "901.234.567-1",
+    "ciudad": "Bogotá",
+    "sector": "restaurantes_colombia"
+  },
+  "año_base": 2025,
+  "generado_en": "2026-07-09T10:05:45",
+  "anomalias_año": [
+    {
+      "mes": 2,
+      "tipo": "ingreso_bajo",
+      "magnitud_pct": 39.0,
+      "descripcion": "Baja demanda prolongada: competencia nueva en el mismo bloque"
+    }
+  ],
+  "meses": [
+    {
+      "periodo": "2025-01",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 21852331.72
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 10257519.14
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 1121467.5
+          }
+        ],
+        "total": 33231318.35
+      },
+      "gastos": {
+        "nomina": 7772689.16,
+        "proveedores": 7219991.11,
+        "arriendo": 3600000.0,
+        "servicios": 1486332.75,
+        "otros": 1406280.05,
+        "total": 21485293.07
+      },
+      "utilidad_neta": 11746025.28,
+      "margen_pct": 35.35
+    },
+    {
+      "periodo": "2025-02",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 14225824.59
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 7903716.0
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 1111534.98
+          }
+        ],
+        "total": 23241075.56
+      },
+      "gastos": {
+        "nomina": 5544384.19,
+        "proveedores": 5374284.35,
+        "arriendo": 3600000.0,
+        "servicios": 986901.26,
+        "otros": 1129383.17,
+        "total": 16634952.96
+      },
+      "utilidad_neta": 6606122.6,
+      "margen_pct": 28.42,
+      "_anomalia": {
+        "tipo": "ingreso_bajo",
+        "magnitud_pct": 39.0,
+        "descripcion": "Baja demanda prolongada: competencia nueva en el mismo bloque"
+      }
+    },
+    {
+      "periodo": "2025-03",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 25208495.92
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 15401247.63
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 2929742.84
+          }
+        ],
+        "total": 43539486.4
+      },
+      "gastos": {
+        "nomina": 10120206.42,
+        "proveedores": 10427778.56,
+        "arriendo": 3600000.0,
+        "servicios": 2490880.4,
+        "otros": 1998731.59,
+        "total": 28637596.96
+      },
+      "utilidad_neta": 14901889.44,
+      "margen_pct": 34.23
+    },
+    {
+      "periodo": "2025-04",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 33467717.74
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 14998978.83
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 3993766.96
+          }
+        ],
+        "total": 52460463.53
+      },
+      "gastos": {
+        "nomina": 12328479.73,
+        "proveedores": 15374233.8,
+        "arriendo": 3600000.0,
+        "servicios": 3384736.69,
+        "otros": 5182502.06,
+        "total": 39869952.28
+      },
+      "utilidad_neta": 12590511.25,
+      "margen_pct": 24.0
+    },
+    {
+      "periodo": "2025-05",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 31513611.54
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 15545786.17
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 3844525.7
+          }
+        ],
+        "total": 50903923.42
+      },
+      "gastos": {
+        "nomina": 12022191.35,
+        "proveedores": 14058518.03,
+        "arriendo": 3600000.0,
+        "servicios": 3179662.84,
+        "otros": 2157517.8,
+        "total": 35017890.03
+      },
+      "utilidad_neta": 15886033.39,
+      "margen_pct": 31.21
+    },
+    {
+      "periodo": "2025-06",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 27930334.56
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 16307684.73
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 5036151.14
+          }
+        ],
+        "total": 49274170.44
+      },
+      "gastos": {
+        "nomina": 12550185.73,
+        "proveedores": 11816641.39,
+        "arriendo": 3600000.0,
+        "servicios": 3355250.2,
+        "otros": 2330639.44,
+        "total": 33652716.76
+      },
+      "utilidad_neta": 15621453.68,
+      "margen_pct": 31.7
+    },
+    {
+      "periodo": "2025-07",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 30708926.94
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 17049869.42
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 5456935.66
+          }
+        ],
+        "total": 53215732.02
+      },
+      "gastos": {
+        "nomina": 12583807.64,
+        "proveedores": 13552419.73,
+        "arriendo": 3600000.0,
+        "servicios": 3635858.5,
+        "otros": 2657749.45,
+        "total": 36029835.33
+      },
+      "utilidad_neta": 17185896.69,
+      "margen_pct": 32.29
+    },
+    {
+      "periodo": "2025-08",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 25127357.92
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 15178124.97
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 3390505.64
+          }
+        ],
+        "total": 43695988.53
+      },
+      "gastos": {
+        "nomina": 10064016.21,
+        "proveedores": 10824567.67,
+        "arriendo": 3600000.0,
+        "servicios": 3197752.67,
+        "otros": 1846252.76,
+        "total": 29532589.31
+      },
+      "utilidad_neta": 14163399.22,
+      "margen_pct": 32.41
+    },
+    {
+      "periodo": "2025-09",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 28459537.14
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 14379980.56
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 3912825.17
+          }
+        ],
+        "total": 46752342.87
+      },
+      "gastos": {
+        "nomina": 10942825.59,
+        "proveedores": 12397749.32,
+        "arriendo": 3600000.0,
+        "servicios": 2598238.2,
+        "otros": 2373870.07,
+        "total": 31912683.18
+      },
+      "utilidad_neta": 14839659.69,
+      "margen_pct": 31.74
+    },
+    {
+      "periodo": "2025-10",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 29689770.41
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 16392580.65
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 5707173.09
+          }
+        ],
+        "total": 51789524.15
+      },
+      "gastos": {
+        "nomina": 12036267.31,
+        "proveedores": 11779500.98,
+        "arriendo": 3600000.0,
+        "servicios": 2572683.32,
+        "otros": 2173957.13,
+        "total": 32162408.74
+      },
+      "utilidad_neta": 19627115.41,
+      "margen_pct": 37.9
+    },
+    {
+      "periodo": "2025-11",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 33212908.59
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 16544263.79
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 7048252.37
+          }
+        ],
+        "total": 56805424.75
+      },
+      "gastos": {
+        "nomina": 13139460.52,
+        "proveedores": 14571309.94,
+        "arriendo": 3600000.0,
+        "servicios": 3141376.24,
+        "otros": 3126302.57,
+        "total": 37578449.27
+      },
+      "utilidad_neta": 19226975.48,
+      "margen_pct": 33.85
+    },
+    {
+      "periodo": "2025-12",
+      "ingresos": {
+        "categorias": [
+          {
+            "nombre": "Ventas en restaurante",
+            "valor": 40953432.59
+          },
+          {
+            "nombre": "Domicilios",
+            "valor": 17414713.93
+          },
+          {
+            "nombre": "Eventos y reservas",
+            "valor": 10088385.56
+          }
+        ],
+        "total": 68456532.08
+      },
+      "gastos": {
+        "nomina": 19335749.39,
+        "proveedores": 17562907.08,
+        "arriendo": 3600000.0,
+        "servicios": 4431304.88,
+        "otros": 7097003.04,
+        "total": 52026964.38
+      },
+      "utilidad_neta": 16429567.7,
+      "margen_pct": 24.0
+    }
+  ]
+}
