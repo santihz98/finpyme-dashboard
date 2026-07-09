@@ -9,10 +9,10 @@ interface KPICardProps {
   variant?:     'default' | 'loading' | 'alert'
 }
 
-const ACCENT_BORDER: Record<string, string> = {
-  emerald: 'border-l-[3px] border-l-emerald',
-  amber:   'border-l-[3px] border-l-amber',
-  coral:   'border-l-[3px] border-l-coral',
+const ACCENT_COLOR: Record<string, string> = {
+  emerald: '#00C896',
+  amber:   '#F4B942',
+  coral:   '#FF5C5C',
 }
 
 const ACCENT_ICON: Record<string, string> = {
@@ -44,11 +44,12 @@ export default function KPICard({
 
   return (
     <div
-      className={[
-        'relative bg-slate border border-border rounded-card p-5',
-        ACCENT_BORDER[colorAccent],
-        'hover:bg-slate/80 transition-colors duration-150',
-      ].join(' ')}
+      className="relative bg-slate border border-border rounded-card p-5 hover:bg-slate/80 transition-colors duration-150"
+      style={{
+        borderLeftWidth:  '4px',
+        borderLeftStyle:  'solid',
+        borderLeftColor:  ACCENT_COLOR[colorAccent],
+      }}
     >
       {/* Alert dot */}
       {variant === 'alert' && (

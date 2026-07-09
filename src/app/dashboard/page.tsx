@@ -113,11 +113,11 @@ export default function DashboardPage() {
       <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-4">
 
         {/* Breadcrumb */}
-        <p className="text-xs text-muted">
+        <p className="text-xs text-muted flex items-center gap-2">
           {data.empresa.nombre}
-          <span className="mx-1.5 opacity-40">·</span>
+          <span className="opacity-40">·</span>
           {getSectorLabel(data.empresa.sector)}
-          <span className="mx-1.5 opacity-40">·</span>
+          <span className="opacity-40">·</span>
           {data.empresa.ciudad}
         </p>
 

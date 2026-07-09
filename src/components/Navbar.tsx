@@ -28,9 +28,9 @@ interface NavbarProps {
 
 // ─── sub-components ───────────────────────────────────────────────────────────
 
-const SELECT_CLASS = `
+const SELECT_BASE = `
   appearance-none bg-slate border border-border text-pearl
-  rounded-tag text-sm pl-3 pr-8 py-2 cursor-pointer max-w-[140px] truncate
+  rounded-tag text-sm pl-3 pr-8 py-2 cursor-pointer
   hover:border-emerald/50 focus:outline-none focus:border-emerald/50
   transition-colors duration-150
 `
@@ -38,18 +38,20 @@ const SELECT_CLASS = `
 function StyledSelect({
   value,
   onChange,
+  className = '',
   children,
 }: {
-  value:    string | number
-  onChange: (v: string) => void
-  children: React.ReactNode
+  value:     string | number
+  onChange:  (v: string) => void
+  className?: string
+  children:  React.ReactNode
 }) {
   return (
     <div className="relative">
       <select
         value={value}
         onChange={e => onChange(e.target.value)}
-        className={SELECT_CLASS}
+        className={`${SELECT_BASE} ${className}`}
       >
         {children}
       </select>
@@ -107,13 +109,22 @@ export default function Navbar({
 
         {/* ── Controls ── */}
         <div className="flex items-center gap-2 flex-wrap justify-end">
-          <StyledSelect value={empresa} onChange={onEmpresaChange}>
+          {/* Desktop: min-w so text isn't truncated. Mobile: max-w to stay compact */}
+          <StyledSelect
+            value={empresa}
+            onChange={onEmpresaChange}
+            className="max-w-[130px] lg:max-w-none lg:min-w-[180px]"
+          >
             {EMPRESAS.map(opt => (
               <option key={opt.value} value={opt.value}>{opt.label}</option>
             ))}
           </StyledSelect>
 
-          <StyledSelect value={mesIndex} onChange={v => onMesChange(Number(v))}>
+          <StyledSelect
+            value={mesIndex}
+            onChange={v => onMesChange(Number(v))}
+            className="max-w-[130px] lg:max-w-none lg:min-w-[160px]"
+          >
             {meses.map((mes, i) => (
               <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
             ))}
@@ -123,7 +134,7 @@ export default function Navbar({
             onClick={handleGenerar}
             disabled={loadingAnalisis}
             className={[
-              'flex items-center gap-2 shrink-0 border rounded-pill text-sm px-4 py-2',
+              'flex items-center gap-2 shrink-0 whitespace-nowrap border rounded-pill text-sm px-4 py-2',
               'transition-all duration-150',
               loadingAnalisis
                 ? 'border-emerald/20 text-emerald/40 bg-emerald/5 cursor-not-allowed'
