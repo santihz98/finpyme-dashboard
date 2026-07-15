@@ -14,7 +14,8 @@ export function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // Protect the dashboard and all internal API routes except the auth
-  // bootstrap endpoint, which is what establishes the cookie in the first place.
-  matcher: ['/dashboard/:path*', '/api/((?!auth/).*)'],
+  // Protect every route under the (dashboard) group, plus internal API
+  // routes except the auth bootstrap endpoint, which is what establishes
+  // the cookie in the first place.
+  matcher: ['/dashboard/:path*', '/empresa/:path*', '/api/((?!auth/).*)'],
 }
