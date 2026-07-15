@@ -3,22 +3,11 @@
 import { useState, useEffect } from 'react'
 import { ChevronDown } from 'lucide-react'
 import type { MesData } from '@/lib/types'
-import type { EmpresaTipo } from '@/lib/dataLoader'
 import { getMesLabel } from '@/lib/utils'
-
-// ─── constants ────────────────────────────────────────────────────────────────
-
-const EMPRESAS: { value: EmpresaTipo; label: string }[] = [
-  { value: 'restaurante',   label: '🏪 Restaurante Bogotá'    },
-  { value: 'distribuidora', label: '🏭 Distribuidora Medellín' },
-  { value: 'clinica',       label: '🏥 Clínica Cali'          },
-]
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
 interface NavbarProps {
-  empresa:           string
-  onEmpresaChange:   (e: string) => void
   mesIndex:          number
   onMesChange:       (i: number) => void
   meses:             MesData[]
@@ -66,8 +55,6 @@ function StyledSelect({
 // ─── main component ───────────────────────────────────────────────────────────
 
 export default function Navbar({
-  empresa,
-  onEmpresaChange,
   mesIndex,
   onMesChange,
   meses,
@@ -76,10 +63,7 @@ export default function Navbar({
 }: NavbarProps) {
   const [hasGenerated, setHasGenerated] = useState(false)
 
-  // Reset "Regenerar" label whenever the selection changes
-  useEffect(() => {
-    setHasGenerated(false)
-  }, [empresa, mesIndex])
+  useEffect(() => { setHasGenerated(false) }, [mesIndex])
 
   function handleGenerar() {
     onGenerarAnalisis()
@@ -109,34 +93,25 @@ export default function Navbar({
 
         {/* ── Controls ── */}
         <div className="flex items-center gap-2 flex-wrap justify-end">
-          {/* Desktop: min-w so text isn't truncated. Mobile: max-w to stay compact */}
-          <StyledSelect
-            value={empresa}
-            onChange={onEmpresaChange}
-            className="max-w-[130px] lg:max-w-none lg:min-w-[180px]"
-          >
-            {EMPRESAS.map(opt => (
-              <option key={opt.value} value={opt.value}>{opt.label}</option>
-            ))}
-          </StyledSelect>
-
-          <StyledSelect
-            value={mesIndex}
-            onChange={v => onMesChange(Number(v))}
-            className="max-w-[130px] lg:max-w-none lg:min-w-[160px]"
-          >
-            {meses.map((mes, i) => (
-              <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
-            ))}
-          </StyledSelect>
+          {meses.length > 0 && (
+            <StyledSelect
+              value={mesIndex}
+              onChange={v => onMesChange(Number(v))}
+              className="max-w-[160px] lg:max-w-none lg:min-w-[180px]"
+            >
+              {meses.map((mes, i) => (
+                <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
+              ))}
+            </StyledSelect>
+          )}
 
           <button
             onClick={handleGenerar}
-            disabled={loadingAnalisis}
+            disabled={loadingAnalisis || meses.length === 0}
             className={[
               'flex items-center gap-2 shrink-0 whitespace-nowrap border rounded-pill text-sm px-4 py-2',
               'transition-all duration-150',
-              loadingAnalisis
+              loadingAnalisis || meses.length === 0
                 ? 'border-emerald/20 text-emerald/40 bg-emerald/5 cursor-not-allowed'
                 : 'border-emerald/30 text-emerald bg-emerald/10 hover:bg-emerald/20 active:scale-95',
             ].join(' ')}
