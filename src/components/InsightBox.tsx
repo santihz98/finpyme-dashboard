@@ -29,20 +29,14 @@ const ALERT_META: Record<
 
 // ─── sub-states ───────────────────────────────────────────────────────────────
 
-function EmptyState({ mesLabel, onGenerar }: { mesLabel: string; onGenerar: () => void }) {
+function EmptyState() {
   return (
-    <div className="flex flex-col items-center justify-center gap-3 py-8 px-6 text-center rounded-card border border-dashed border-border bg-slate">
-      <Sparkles size={24} className="text-muted" />
-      <p className="text-xs text-muted leading-snug">
-        Análisis IA no generado para{' '}
-        <span className="text-pearl font-medium">{mesLabel}</span>
+    <div className="flex flex-col items-center justify-center gap-3 py-10 px-6 text-center rounded-card border border-dashed border-border bg-slate">
+      <Sparkles size={28} className="text-muted" />
+      <p className="text-sm text-muted">Análisis con IA — Próximamente</p>
+      <p className="text-xs text-muted/70 mt-1 max-w-xs text-center">
+        Estamos trabajando en esta función para darte insights automáticos de tu negocio
       </p>
-      <button
-        onClick={onGenerar}
-        className="bg-emerald text-ink font-semibold text-sm rounded-pill px-6 py-2 hover:bg-emerald/80 active:scale-95 transition-all duration-150"
-      >
-        ✦ Generar análisis
-      </button>
     </div>
   )
 }
@@ -141,7 +135,6 @@ function ResultState({
 export default function InsightBox({
   analisis,
   loading,
-  onGenerar,
   mesLabel,
 }: InsightBoxProps) {
   const [timestamp, setTimestamp] = useState<string>('')
@@ -159,7 +152,7 @@ export default function InsightBox({
   }, [analisis])
 
   if (loading)          return <LoadingState mesLabel={mesLabel} />
-  if (analisis === null) return <EmptyState mesLabel={mesLabel} onGenerar={onGenerar} />
+  if (analisis === null) return <EmptyState />
 
   return (
     <ResultState analisis={analisis} mesLabel={mesLabel} timestamp={timestamp} />
