@@ -1,5 +1,6 @@
 'use client'
 
+import toast from 'react-hot-toast'
 import type { AnalisisIA, MesData } from '@/lib/types'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
@@ -151,14 +152,20 @@ class ApiClient {
   }
 
   private async request<T>(path: string, options?: RequestInit): Promise<T> {
-    const res = await fetch(`${API_URL}${path}`, {
-      ...options,
-      headers: {
-        'Content-Type': 'application/json',
-        ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
-        ...options?.headers,
-      },
-    })
+    let res: Response
+    try {
+      res = await fetch(`${API_URL}${path}`, {
+        ...options,
+        headers: {
+          'Content-Type': 'application/json',
+          ...(this.token ? { Authorization: `Bearer ${this.token}` } : {}),
+          ...options?.headers,
+        },
+      })
+    } catch {
+      toast.error('Error al conectar con el servidor')
+      throw new ApiError(0, 'No se pudo conectar con el servidor')
+    }
 
     if (res.status === 401) {
       void this.clearToken()

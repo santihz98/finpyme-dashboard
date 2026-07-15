@@ -85,11 +85,12 @@ export default function EmpresaPage() {
 
   async function handleLogout() {
     await api.clearToken()
+    toast('Sesión cerrada', { icon: '👋' })
     router.push('/login')
   }
 
   function handleChangePassword() {
-    toast('Esta función estará disponible pronto')
+    toast('Esta función estará disponible pronto', { icon: '⏳' })
   }
 
   // ─── loading / error states ───────────────────────────────────────────────────

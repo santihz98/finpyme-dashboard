@@ -10,6 +10,7 @@ import {
   LogOut,
   type LucideIcon,
 } from 'lucide-react'
+import toast from 'react-hot-toast'
 import { api } from '@/lib/api'
 import { getIniciales } from '@/lib/utils'
 
@@ -44,6 +45,7 @@ export default function Sidebar({ usuario, empresa }: SidebarProps) {
 
   async function handleLogout() {
     await api.clearToken()
+    toast('Sesión cerrada', { icon: '👋' })
     router.push('/login')
   }
 

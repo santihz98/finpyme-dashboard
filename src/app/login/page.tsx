@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from 'react'
 import { useRouter } from 'next/navigation'
+import toast from 'react-hot-toast'
 import { api, ApiError } from '@/lib/api'
 
 export default function LoginPage() {
@@ -16,7 +17,8 @@ export default function LoginPage() {
     setError(null)
     setLoading(true)
     try {
-      await api.login(email, password)
+      const data = await api.login(email, password)
+      toast.success(`Bienvenido, ${data.usuario.nombre}`)
       router.push('/dashboard')
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
