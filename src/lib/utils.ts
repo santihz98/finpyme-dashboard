@@ -63,3 +63,43 @@ const SECTOR_LABELS: Record<string, string> = {
 export function getSectorLabel(sector: string): string {
   return SECTOR_LABELS[sector] ?? sector
 }
+
+/**
+ * Extracts up to two uppercase initials from a full name.
+ * Example: "Demo Sabores" → "DS"
+ */
+export function getIniciales(nombre: string): string {
+  return nombre
+    .trim()
+    .split(/\s+/)
+    .slice(0, 2)
+    .map(w => w[0]?.toUpperCase() ?? '')
+    .join('')
+}
+
+const MESES_ES_MIN = MESES_ES.map(m => m.toLowerCase())
+
+/**
+ * Formats an ISO date as a lowercase Spanish "month year" label.
+ * Example: "2025-07-15T14:54:50Z" → "julio 2025"
+ */
+export function formatMesAnio(fechaISO: string): string {
+  const fecha = new Date(fechaISO)
+  return `${MESES_ES_MIN[fecha.getMonth()]} ${fecha.getFullYear()}`
+}
+
+/**
+ * Formats an ISO timestamp as a relative Spanish string.
+ * Example: 90 minutes ago → "hace 1 hora"
+ */
+export function formatTiempoRelativo(fechaISO: string): string {
+  const diffMs  = Date.now() - new Date(fechaISO).getTime()
+  const minutos = Math.floor(diffMs / 60_000)
+
+  if (minutos < 1)   return 'hace un momento'
+  if (minutos < 60)  return `hace ${minutos} minuto${minutos === 1 ? '' : 's'}`
+  const horas = Math.floor(minutos / 60)
+  if (horas < 24)    return `hace ${horas} hora${horas === 1 ? '' : 's'}`
+  const dias = Math.floor(horas / 24)
+  return `hace ${dias} día${dias === 1 ? '' : 's'}`
+}

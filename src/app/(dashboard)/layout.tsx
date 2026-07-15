@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import { useRouter } from 'next/navigation'
 import { Menu } from 'lucide-react'
+import { Toaster } from 'react-hot-toast'
 import Sidebar from '@/components/Sidebar'
 import { api } from '@/lib/api'
 
@@ -44,6 +45,18 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
 
   return (
     <div className="flex flex-row min-h-screen bg-ink">
+
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: '#1A2A3A',
+            color:      '#E8EDF2',
+            border:     '1px solid #243447',
+            fontSize:   '13px',
+          },
+        }}
+      />
 
       {/* ── Desktop sidebar ── */}
       <div className="hidden lg:flex">

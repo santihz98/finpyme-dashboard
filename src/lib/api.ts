@@ -25,6 +25,9 @@ interface MeResponse {
   email: string
   nombre: string
   rol: string
+  activo: boolean
+  ultimo_login: string
+  created_at: string
   empresa: {
     id: string
     nombre: string
@@ -33,6 +36,7 @@ interface MeResponse {
     sector: string
     plan: string
     activo: boolean
+    created_at: string
   }
 }
 

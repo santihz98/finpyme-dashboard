@@ -11,6 +11,7 @@ import {
   type LucideIcon,
 } from 'lucide-react'
 import { api } from '@/lib/api'
+import { getIniciales } from '@/lib/utils'
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -34,17 +35,6 @@ const NAV_ITEMS: NavItem[] = [
   { label: 'Periodos',   icon: CalendarDays,     href: '/periodos', disabled: true },
   { label: 'Reportes',   icon: FileBarChart,     href: '/reportes', disabled: true },
 ]
-
-// ─── helpers ──────────────────────────────────────────────────────────────────
-
-function getIniciales(nombre: string): string {
-  return nombre
-    .trim()
-    .split(/\s+/)
-    .slice(0, 2)
-    .map(w => w[0]?.toUpperCase() ?? '')
-    .join('')
-}
 
 // ─── main component ───────────────────────────────────────────────────────────
 
