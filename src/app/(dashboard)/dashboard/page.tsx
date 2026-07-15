@@ -29,7 +29,7 @@ function Skeleton({ className = '' }: { className?: string }) {
 
 function DashboardSkeleton() {
   return (
-    <div className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-4">
+    <div className="px-6 py-4 space-y-4 w-full">
       <Skeleton className="h-4 w-64" />
       <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
         {[0, 1, 2, 3].map(i => <Skeleton key={i} className="h-28" />)}
@@ -205,8 +205,8 @@ export default function DashboardPage() {
 
           <button
             disabled
+            className="opacity-50 cursor-not-allowed bg-slate border border-border text-muted rounded-pill px-4 py-2 text-sm"
             title="Análisis con IA — Próximamente"
-            className="bg-slate border border-border text-muted opacity-50 cursor-not-allowed rounded-pill px-4 py-2 text-sm"
           >
             ✦ Analizar con IA
           </button>
@@ -216,7 +216,7 @@ export default function DashboardPage() {
       {loadingInit ? (
         <DashboardSkeleton />
       ) : initError ? (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center">
+        <div className="px-6 py-12 text-center w-full">
           <p className="text-sm text-coral">{initError}</p>
           <button
             onClick={() => window.location.reload()}
@@ -226,15 +226,15 @@ export default function DashboardPage() {
           </button>
         </div>
       ) : allMeses.length === 0 ? (
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 py-12 text-center">
+        <div className="px-6 py-12 text-center w-full">
           <p className="text-sm text-muted">No hay períodos registrados aún.</p>
         </div>
       ) : mesActual ? (
-        <main className="max-w-7xl mx-auto px-4 sm:px-6 py-4 space-y-4">
+        <main className="px-6 py-4 space-y-4 w-full">
 
           {/* Breadcrumb */}
           {empresaInfo && (
-            <p className="text-xs text-muted flex items-center gap-2">
+            <p className="text-xs text-muted flex items-center gap-2 mb-4">
               {empresaInfo.nombre}
               <span className="opacity-40">·</span>
               {getSectorLabel(empresaInfo.sector)}
