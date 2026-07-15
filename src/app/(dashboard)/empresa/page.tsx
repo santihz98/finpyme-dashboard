@@ -40,11 +40,19 @@ function Skeleton({ className = '' }: { className?: string }) {
   return <div className={`bg-slate/60 rounded-tag animate-pulse ${className}`} />
 }
 
-function Row({ label, value, last = false }: { label: string; value: ReactNode; last?: boolean }) {
+function Row({
+  label,
+  value,
+  valueClassName = 'text-pearl font-medium',
+}: {
+  label: string
+  value: ReactNode
+  valueClassName?: string
+}) {
   return (
-    <div className={`flex items-center justify-between py-2.5 ${last ? '' : 'border-b border-border'}`}>
-      <span className="text-xs text-muted">{label}</span>
-      <span className="text-sm text-pearl font-medium">{value}</span>
+    <div className="flex justify-between items-center py-3 border-b border-border last:border-0">
+      <span className="text-xs text-muted uppercase tracking-wider">{label}</span>
+      <span className={`text-sm ${valueClassName}`}>{value}</span>
     </div>
   )
 }
@@ -93,132 +101,159 @@ export default function EmpresaPage() {
     toast('Esta función estará disponible pronto', { icon: '⏳' })
   }
 
+  function handleUpgrade() {
+    toast.success('¡Pronto disponible! Te notificaremos.')
+  }
+
   // ─── loading / error states ───────────────────────────────────────────────────
 
   if (loading) {
     return (
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-6 py-6">
-        {[0, 1, 2, 3].map(i => <Skeleton key={i} className="h-56" />)}
+      <div className="px-6 py-6 w-full space-y-0">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
+          {[0, 1, 2, 3].map(i => <Skeleton key={i} className="h-56" />)}
+        </div>
       </div>
     )
   }
 
   if (error || !me || !resumen) {
     return (
-      <div className="px-6 py-12 text-center">
+      <div className="px-6 py-12 text-center w-full">
         <p className="text-sm text-coral">{error ?? 'No se pudo cargar la información.'}</p>
       </div>
     )
   }
 
-  const sector   = getSectorMeta(me.empresa.sector)
-  const rol      = ROL_META[me.rol] ?? { label: me.rol, className: 'bg-muted/20 text-muted' }
-  const isPro    = me.empresa.plan.toLowerCase() === 'pro'
+  const sector = getSectorMeta(me.empresa.sector)
+  const rol    = ROL_META[me.rol] ?? { label: me.rol, className: 'bg-muted/20 text-muted' }
+  const isPro  = me.empresa.plan.toLowerCase() === 'pro'
 
   // ─── render ────────────────────────────────────────────────────────────────────
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 px-6 py-6">
+    <div className="px-6 py-6 w-full space-y-0">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 w-full">
 
-      {/* ── Columna izquierda: info empresa ── */}
-      <div className="space-y-4">
+        {/* ── Columna izquierda: info empresa ── */}
+        <div className="flex flex-col gap-4">
 
-        {/* Card 1 — Información de la empresa */}
-        <div className="bg-slate border border-border rounded-card p-5">
-          <h2 className="text-sm font-semibold text-pearl mb-1">Información de la empresa</h2>
-          <p className="text-lg font-semibold text-pearl mb-3">{me.empresa.nombre}</p>
+          {/* Card 1 — Información de la empresa */}
+          <div className="bg-slate rounded-card p-6 border border-border">
+            <h2 className="text-sm font-semibold text-pearl mb-1">Información de la empresa</h2>
+            <p className="text-lg font-semibold text-pearl mb-3">{me.empresa.nombre}</p>
 
-          <Row label="NIT" value={me.empresa.nit} />
-          <Row label="Ciudad" value={me.empresa.ciudad} />
-          <Row
-            label="Sector"
-            value={
-              <span className="inline-flex items-center gap-1.5 text-xs bg-white/5 border border-border rounded-pill px-2.5 py-1">
-                <span>{sector.icon}</span>{sector.label}
-              </span>
-            }
-          />
-          <Row
-            label="Plan"
-            value={
-              <span
-                className={`text-xs rounded-pill px-2.5 py-1 font-medium ${
-                  isPro ? 'bg-emerald/20 text-emerald' : 'bg-muted/20 text-muted'
-                }`}
-              >
-                {isPro ? 'Pro' : 'Free'}
-              </span>
-            }
-          />
-          <Row label="Miembro desde" value={formatMesAnio(me.empresa.created_at)} last />
+            <Row label="NIT" value={me.empresa.nit} />
+            <Row label="Ciudad" value={me.empresa.ciudad} />
+            <Row
+              label="Sector"
+              value={
+                <span className="inline-flex items-center gap-1.5 text-xs bg-white/5 border border-border rounded-pill px-2.5 py-1">
+                  <span>{sector.icon}</span>{sector.label}
+                </span>
+              }
+            />
+            <Row
+              label="Plan"
+              value={
+                <span
+                  className={`text-xs rounded-pill px-2.5 py-1 font-medium ${
+                    isPro ? 'bg-emerald/20 text-emerald' : 'bg-muted/20 text-muted'
+                  }`}
+                >
+                  {isPro ? 'Pro' : 'Free'}
+                </span>
+              }
+            />
+            <Row label="Miembro desde" value={formatMesAnio(me.empresa.created_at)} />
+          </div>
+
+          {/* Card 2 — Resumen del año */}
+          <div className="bg-slate rounded-card p-6 border border-border">
+            <h2 className="text-sm font-semibold text-pearl mb-3">Resumen del año</h2>
+
+            <Row label="Total ingresos" value={formatCOP(resumen.total_ingresos)} valueClassName="text-emerald font-semibold" />
+            <Row label="Total gastos" value={formatCOP(resumen.total_gastos)} valueClassName="text-coral font-semibold" />
+            <Row label="Utilidad total" value={formatCOP(resumen.utilidad_total)} valueClassName="text-pearl font-semibold" />
+            <Row label="Margen promedio" value={formatPct(resumen.margen_promedio)} valueClassName="text-pearl font-semibold" />
+            <Row label="Mejor mes" value={getMesLabel(resumen.mejor_mes)} valueClassName="text-emerald" />
+            <Row label="Peor mes" value={getMesLabel(resumen.peor_mes)} valueClassName="text-coral" />
+          </div>
+
         </div>
 
-        {/* Card 2 — Resumen del año */}
-        <div className="bg-slate border border-border rounded-card p-5">
-          <h2 className="text-sm font-semibold text-pearl mb-3">Resumen del año</h2>
+        {/* ── Columna derecha: info usuario ── */}
+        <div className="flex flex-col gap-4">
 
-          <Row label="Total ingresos" value={<span className="text-emerald">{formatCOP(resumen.total_ingresos)}</span>} />
-          <Row label="Total gastos" value={<span className="text-coral">{formatCOP(resumen.total_gastos)}</span>} />
-          <Row label="Utilidad total" value={formatCOP(resumen.utilidad_total)} />
-          <Row label="Margen promedio" value={<span className="text-amber">{formatPct(resumen.margen_promedio)}</span>} />
-          <Row label="Mejor mes" value={getMesLabel(resumen.mejor_mes)} />
-          <Row label="Peor mes" value={getMesLabel(resumen.peor_mes)} last />
-        </div>
+          {/* Card 3 — Mi perfil */}
+          <div className="bg-slate rounded-card p-6 border border-border">
+            <h2 className="text-sm font-semibold text-pearl mb-4">Mi perfil</h2>
 
-      </div>
-
-      {/* ── Columna derecha: info usuario ── */}
-      <div className="space-y-4">
-
-        {/* Card 3 — Mi perfil */}
-        <div className="bg-slate border border-border rounded-card p-5">
-          <h2 className="text-sm font-semibold text-pearl mb-4">Mi perfil</h2>
-
-          <div className="flex items-center gap-4">
-            <div className="w-16 h-16 rounded-full bg-emerald flex items-center justify-center shrink-0">
-              <span className="text-2xl font-semibold text-ink">{getIniciales(me.nombre)}</span>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-16 h-16 rounded-full bg-emerald flex items-center justify-center shrink-0">
+                <span className="text-2xl font-semibold text-ink">{getIniciales(me.nombre)}</span>
+              </div>
+              <p className="text-xl font-semibold text-pearl mt-3">{me.nombre}</p>
+              <p className="text-sm text-muted mt-1">{me.email}</p>
             </div>
-            <div className="min-w-0">
-              <p className="text-lg font-semibold text-pearl truncate">{me.nombre}</p>
-              <p className="text-sm text-muted truncate">{me.email}</p>
+
+            <div className="border-t border-border mt-4 pt-4">
+              <Row
+                label="Rol"
+                value={
+                  <span className={`text-xs rounded-pill px-2.5 py-1 font-medium ${rol.className}`}>
+                    {rol.label}
+                  </span>
+                }
+              />
+              <Row label="Último acceso" value={formatTiempoRelativo(me.ultimo_login)} />
             </div>
           </div>
 
-          <div className="mt-4 pt-4 border-t border-border space-y-2.5">
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-muted">Rol</span>
-              <span className={`text-xs rounded-pill px-2.5 py-1 font-medium ${rol.className}`}>
-                {rol.label}
-              </span>
-            </div>
-            <div className="flex items-center justify-between">
-              <span className="text-xs text-muted">Último acceso</span>
-              <span className="text-sm text-pearl">{formatTiempoRelativo(me.ultimo_login)}</span>
-            </div>
+          {/* Card 4 — Seguridad */}
+          <div className="bg-slate rounded-card p-6 border border-border space-y-2.5">
+            <h2 className="text-sm font-semibold text-pearl mb-1.5">Seguridad</h2>
+
+            <button
+              onClick={handleChangePassword}
+              className="w-full text-left border border-border rounded-tag px-4 py-2.5 text-sm text-pearl hover:border-emerald/50 transition-colors duration-150"
+            >
+              Cambiar contraseña
+            </button>
+
+            <button
+              onClick={handleLogout}
+              className="w-full text-left border border-coral/30 rounded-tag px-4 py-2.5 text-sm text-coral hover:bg-coral/10 transition-colors duration-150"
+            >
+              Cerrar sesión
+            </button>
           </div>
-        </div>
 
-        {/* Card 4 — Seguridad */}
-        <div className="bg-slate border border-border rounded-card p-5 space-y-2.5">
-          <h2 className="text-sm font-semibold text-pearl mb-1.5">Seguridad</h2>
+          {/* Card 5 — Plan actual */}
+          <div className="bg-slate rounded-card p-6 border border-border mt-4">
+            <h2 className="text-sm font-medium text-pearl mb-3">Plan actual</h2>
 
-          <button
-            onClick={handleChangePassword}
-            className="w-full text-left border border-border rounded-tag px-4 py-2.5 text-sm text-pearl hover:border-emerald/50 transition-colors duration-150"
-          >
-            Cambiar contraseña
-          </button>
+            <span
+              className={`text-xs px-3 py-1 rounded-pill ${
+                isPro ? 'bg-emerald/20 text-emerald' : 'bg-muted/20 text-muted'
+              }`}
+            >
+              {isPro ? 'Pro' : 'Free'}
+            </span>
 
-          <button
-            onClick={handleLogout}
-            className="w-full text-left border border-coral/30 rounded-tag px-4 py-2.5 text-sm text-coral hover:bg-coral/10 transition-colors duration-150"
-          >
-            Cerrar sesión
-          </button>
+            <p className="text-xs text-muted mt-2">Acceso básico al dashboard financiero</p>
+
+            <button
+              onClick={handleUpgrade}
+              className="mt-4 w-full bg-emerald/10 border border-emerald/30 text-emerald text-sm rounded-card py-2 text-center hover:bg-emerald/20 transition-colors cursor-pointer"
+            >
+              Actualizar a Pro →
+            </button>
+          </div>
+
         </div>
 
       </div>
-
     </div>
   )
 }
