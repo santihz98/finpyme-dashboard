@@ -1,9 +1,8 @@
 'use client'
 
 import { useState, useMemo, useEffect, useCallback } from 'react'
-import { TrendingUp, TrendingDown, DollarSign, Percent } from 'lucide-react'
+import { TrendingUp, TrendingDown, DollarSign, Percent, ChevronDown } from 'lucide-react'
 
-import Navbar       from '@/components/Navbar'
 import KPICard      from '@/components/KPICard'
 import RevenueChart from '@/components/RevenueChart'
 import ExpenseDonut from '@/components/ExpenseDonut'
@@ -170,13 +169,49 @@ export default function DashboardPage() {
 
   return (
     <div className="min-h-screen bg-ink">
-      <Navbar
-        mesIndex={safeIndex}
-        onMesChange={setMesIndex}
-        meses={allMeses}
-        onGenerarAnalisis={handleGenerarAnalisis}
-        loadingAnalisis={loadingAnalisis}
-      />
+      <div className="flex items-center justify-between px-6 py-4 border-b border-border sticky top-0 bg-ink/95 backdrop-blur z-10">
+        <div>
+          <h1 className="text-lg font-semibold text-pearl">Dashboard</h1>
+          {empresaInfo && mesActual && (
+            <p className="text-xs text-muted mt-0.5">
+              {empresaInfo.nombre} · {mesLabel}
+            </p>
+          )}
+        </div>
+
+        <div className="flex items-center gap-2">
+          {allMeses.length > 0 && (
+            <div className="relative">
+              <select
+                value={safeIndex}
+                onChange={e => setMesIndex(Number(e.target.value))}
+                className="
+                  appearance-none bg-slate border border-border text-pearl
+                  rounded-tag text-sm pl-3 pr-8 py-2 cursor-pointer
+                  hover:border-emerald/50 focus:outline-none focus:border-emerald/50
+                  transition-colors duration-150
+                "
+              >
+                {allMeses.map((mes, i) => (
+                  <option key={mes.periodo} value={i}>{getMesLabel(mes.periodo)}</option>
+                ))}
+              </select>
+              <ChevronDown
+                size={13}
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted pointer-events-none"
+              />
+            </div>
+          )}
+
+          <button
+            disabled
+            title="Análisis con IA — Próximamente"
+            className="bg-slate border border-border text-muted opacity-50 cursor-not-allowed rounded-pill px-4 py-2 text-sm"
+          >
+            ✦ Analizar con IA
+          </button>
+        </div>
+      </div>
 
       {loadingInit ? (
         <DashboardSkeleton />
