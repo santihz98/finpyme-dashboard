@@ -65,6 +65,10 @@ function CustomTooltip({
   )
 }
 
+function renderTooltip(props: object) {
+  return <CustomTooltip {...(props as { active?: boolean; payload?: { payload: Segment }[] })} />
+}
+
 // ─── main component ───────────────────────────────────────────────────────────
 
 export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
@@ -85,12 +89,6 @@ export default function ExpenseDonut({ gastos, mesLabel }: ExpenseDonutProps) {
     const nominaPct = total > 0 ? ((gastos.nomina ?? 0) / total) * 100 : 0
     return { segments, total, isAlerta: nominaPct > ALERTA_NOMINA_PCT }
   }, [gastos])
-
-  const renderTooltip = useMemo(
-    () => (props: object) =>
-      <CustomTooltip {...(props as { active?: boolean; payload?: { payload: Segment }[] })} />,
-    [],
-  )
 
   return (
     <div className="bg-slate border border-border rounded-card p-4 flex flex-col h-full overflow-visible">
