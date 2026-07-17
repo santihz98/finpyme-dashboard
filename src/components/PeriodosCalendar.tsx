@@ -55,7 +55,7 @@ export default function PeriodosCalendar({
           return (
             <div
               key={periodo}
-              className="bg-ink/30 opacity-50 border border-border rounded-card p-4 flex items-center justify-center min-h-[112px]"
+              className="bg-ink/30 opacity-50 border border-border rounded-card p-5 flex items-center justify-center min-h-[112px]"
             >
               <p className="text-xs text-muted">Sin datos</p>
             </div>
@@ -71,33 +71,34 @@ export default function PeriodosCalendar({
             key={periodo}
             onClick={() => onSelectPeriodo(data.periodo)}
             className={[
-              'relative bg-slate border border-border rounded-card p-4',
+              'relative bg-slate border border-border rounded-card p-5',
               'hover:border-emerald/30 transition-colors cursor-pointer',
               esMejor ? 'border-t-2 border-t-emerald' : '',
               esPeor ? 'border-t-2 border-t-coral' : '',
             ].join(' ')}
           >
             {/* Header */}
-            <div className="flex items-start justify-between mb-3">
-              <p className="text-xs text-muted">
-                {MESES_ABREV[mesIndex]} {anio}
-              </p>
+            <div className="flex items-start justify-between">
+              <div className="flex items-baseline gap-1.5">
+                <span className="text-sm font-medium text-pearl">{MESES_ABREV[mesIndex]}</span>
+                <span className="text-xs text-muted">{anio}</span>
+              </div>
               {data.tiene_anomalia && (
                 <span className="text-amber text-xs leading-none">⚠</span>
               )}
             </div>
 
             {/* Ingreso total */}
-            <p className={`text-lg font-semibold ${getMargenColor(data.margen_pct)}`}>
+            <p className={`mt-2 text-xl font-semibold ${getMargenColor(data.margen_pct)}`}>
               {formatCOP(data.ingresos_total)}
             </p>
 
             {/* Margen + barra */}
-            <div className="mt-3">
-              <p className="text-xs text-muted mb-1">Margen: {formatPct(data.margen_pct)}</p>
-              <div className="w-full h-1 bg-border rounded-full overflow-hidden">
+            <div>
+              <p className="text-sm text-muted mt-2 mb-1">Margen: {formatPct(data.margen_pct)}</p>
+              <div className="w-full h-1 bg-border rounded-sm overflow-hidden">
                 <div
-                  className={`h-full rounded-full ${getBarColor(data.margen_pct)}`}
+                  className={`h-full rounded-sm ${getBarColor(data.margen_pct)}`}
                   style={{ width: `${barWidth}%` }}
                 />
               </div>

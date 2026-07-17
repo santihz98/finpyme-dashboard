@@ -56,7 +56,7 @@ export default function PeriodosTable({
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border">
-            {['Mes', 'Ingresos', 'Gastos', 'Utilidad', 'Margen', 'vs anterior'].map((h, i) => (
+            {['Mes', 'Ingresos', 'Gastos', 'Utilidad', 'Margen', 'vs ant.'].map((h, i) => (
               <th
                 key={h}
                 className={`px-5 py-3 text-xs text-muted font-medium ${i === 0 ? 'text-left' : 'text-right'}`}
