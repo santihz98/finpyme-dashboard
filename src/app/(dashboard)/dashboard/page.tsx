@@ -1,6 +1,7 @@
 'use client'
 
-import { useState, useMemo, useEffect, useCallback } from 'react'
+import { useState, useMemo, useEffect, useCallback, Suspense } from 'react'
+import { useSearchParams } from 'next/navigation'
 import { TrendingUp, TrendingDown, DollarSign, Percent, ChevronDown } from 'lucide-react'
 
 import KPICard      from '@/components/KPICard'
@@ -45,7 +46,11 @@ function DashboardSkeleton() {
 
 // ─── page ─────────────────────────────────────────────────────────────────────
 
-export default function DashboardPage() {
+function DashboardContent() {
+  // Deep-link support: /dashboard?periodo=2025-03 selects that month on load
+  const searchParams = useSearchParams()
+  const periodoParam  = searchParams.get('periodo')
+
   // ── Data state ──────────────────────────────────────────────────────────────
   const [allMeses,    setAllMeses]    = useState<MesData[]>([])
   const [mesIndex,    setMesIndex]    = useState(0)
@@ -89,7 +94,12 @@ export default function DashboardPage() {
 
         if (cancelled) return
         setAllMeses(mesesData)
-        setMesIndex(mesesData.length - 1) // default to latest
+
+        // Deep-linked period wins if present and valid; otherwise default to latest
+        const deepLinkIndex = periodoParam
+          ? mesesData.findIndex(m => m.periodo === periodoParam)
+          : -1
+        setMesIndex(deepLinkIndex !== -1 ? deepLinkIndex : mesesData.length - 1)
       } catch (err) {
         if (cancelled) return
         if (err instanceof ApiError && err.status === 401) return // handled in api.ts
@@ -101,6 +111,9 @@ export default function DashboardPage() {
 
     void init()
     return () => { cancelled = true }
+    // Intentionally runs once on mount — periodoParam is only consulted for
+    // the initial selection, not re-applied if the URL changes afterward.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
   // ── Auto-load existing analisis when period changes ───────────────────────────
@@ -355,5 +368,13 @@ export default function DashboardPage() {
         </main>
       ) : null}
     </div>
+  )
+}
+
+export default function DashboardPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen bg-ink"><DashboardSkeleton /></div>}>
+      <DashboardContent />
+    </Suspense>
   )
 }
