@@ -2,7 +2,7 @@ name: Preview Deploy
 
 on:
   pull_request:
-    branches: [main]
+    branches: [main, staging, develop]
 
 jobs:
   preview:
