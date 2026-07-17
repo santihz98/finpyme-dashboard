@@ -33,7 +33,7 @@ interface NavItem {
 const NAV_ITEMS: NavItem[] = [
   { label: 'Dashboard',  icon: LayoutDashboard, href: '/dashboard' },
   { label: 'Mi Empresa', icon: Building2,        href: '/empresa' },
-  { label: 'Periodos',   icon: CalendarDays,     href: '/periodos', disabled: true },
+  { label: 'Periodos',   icon: CalendarDays,     href: '/periodos' },
   { label: 'Reportes',   icon: FileBarChart,     href: '/reportes', disabled: true },
 ]
 
