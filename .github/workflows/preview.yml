@@ -8,6 +8,10 @@ jobs:
   preview:
     name: Deploy Preview
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      issues: write
     steps:
       - uses: actions/checkout@v4
 
