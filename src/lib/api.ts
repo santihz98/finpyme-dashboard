@@ -1,7 +1,7 @@
 'use client'
 
 import toast from 'react-hot-toast'
-import type { AnalisisIA, MesData } from '@/lib/types'
+import type { AnalisisIA, MesData, PeriodoResumen, ResumenAnual } from '@/lib/types'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
@@ -74,17 +74,6 @@ interface BackendAnalisis {
   modelo_usado: string
   tokens_usados: number
   created_at: string
-}
-
-interface ResumenAnual {
-  total_ingresos: number
-  total_gastos: number
-  utilidad_total: number
-  margen_promedio: number
-  mejor_mes: string
-  peor_mes: string
-  categorias_ingreso_top: { categoria: string; total: number; pct: number }[]
-  tendencia_gastos: { periodo: string; ingresos: number; gastos: number }[]
 }
 
 // ── Custom error with status code ─────────────────────────────────────────────
@@ -216,6 +205,10 @@ class ApiClient {
 
   async getPeriodos(): Promise<PeriodoListItem[]> {
     return this.request<PeriodoListItem[]>('/periodos/')
+  }
+
+  async getPeriodosResumen(): Promise<PeriodoResumen[]> {
+    return this.request<PeriodoResumen[]>('/periodos/')
   }
 
   async getPeriodo(periodo: string): Promise<MesData> {

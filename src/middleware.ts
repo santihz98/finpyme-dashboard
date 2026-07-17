@@ -17,5 +17,5 @@ export const config = {
   // Protect every route under the (dashboard) group, plus internal API
   // routes except the auth bootstrap endpoint, which is what establishes
   // the cookie in the first place.
-  matcher: ['/dashboard/:path*', '/empresa/:path*', '/api/((?!auth/).*)'],
+  matcher: ['/dashboard/:path*', '/empresa/:path*', '/periodos/:path*', '/api/((?!auth/).*)'],
 }
