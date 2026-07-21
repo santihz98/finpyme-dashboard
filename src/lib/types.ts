@@ -60,6 +60,27 @@ export interface PeriodoResumen {
   descripcion_anomalia?: string
 }
 
+export interface ComparativoData {
+  periodo: string
+  ingresos_total: number
+  gastos_total: number
+  utilidad_neta: number
+  margen_pct: number
+  tiene_anomalia: boolean
+  gastos_detalle: {
+    nomina: number
+    proveedores: number
+    arriendo: number
+    servicios: number
+    otros: number
+  }
+  categorias_ingreso: {
+    nombre: string
+    valor: number
+    pct: number
+  }[]
+}
+
 export interface ResumenAnual {
   total_ingresos: number
   total_gastos: number

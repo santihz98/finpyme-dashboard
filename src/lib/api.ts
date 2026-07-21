@@ -1,7 +1,7 @@
 'use client'
 
 import toast from 'react-hot-toast'
-import type { AnalisisIA, MesData, PeriodoResumen, ResumenAnual } from '@/lib/types'
+import type { AnalisisIA, ComparativoData, MesData, PeriodoResumen, ResumenAnual } from '@/lib/types'
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
 
@@ -275,8 +275,24 @@ class ApiClient {
     document.body.removeChild(a)
   }
 
-  async enviarReporteEmail(periodo: string): Promise<void> {
-    await this.request(`/reportes/enviar/${periodo}`, { method: 'POST' })
+  async enviarReporteEmail(periodo: string): Promise<{
+    enviado: boolean
+    email: string
+    periodo: string
+  }> {
+    return this.request(`/reportes/enviar-email/${periodo}`, {
+      method: 'POST',
+    })
+  }
+
+  async getComparativo(periodos: string[]): Promise<{
+    empresa: string
+    periodos: ComparativoData[]
+  }> {
+    return this.request('/reportes/comparativo', {
+      method: 'POST',
+      body: JSON.stringify({ periodos }),
+    })
   }
 }
 
