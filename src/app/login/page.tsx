@@ -18,8 +18,20 @@ export default function LoginPage() {
     setLoading(true)
     try {
       const data = await api.login(email, password)
+
+      // Belt-and-suspenders: api.login() already awaits this internally via
+      // setToken(), but staging/preview logins were seeing the middleware
+      // redirect back to /login before the cookie landed — awaiting it
+      // explicitly here, then refreshing the router, closes that race.
+      await fetch('/api/auth/set-cookie', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ token: data.access_token }),
+      })
+
       toast.success(`Bienvenido, ${data.usuario.nombre}`)
       router.push('/dashboard')
+      router.refresh()
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         setError('Correo o contraseña incorrectos')
