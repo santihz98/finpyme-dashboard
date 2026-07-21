@@ -3,6 +3,7 @@
 import { AlertTriangle } from 'lucide-react'
 import type { PeriodoResumen } from '@/lib/types'
 import { formatCOP, formatPct, getMesLabel, getDelta } from '@/lib/utils'
+import BotonReporte from '@/components/BotonReporte'
 
 // ─── types ────────────────────────────────────────────────────────────────────
 
@@ -56,7 +57,7 @@ export default function PeriodosTable({
       <table className="w-full text-sm">
         <thead>
           <tr className="border-b border-border">
-            {['Mes', 'Ingresos', 'Gastos', 'Utilidad', 'Margen', 'vs ant.'].map((h, i) => (
+            {['Mes', 'Ingresos', 'Gastos', 'Utilidad', 'Margen', 'vs ant.', 'Reporte'].map((h, i) => (
               <th
                 key={h}
                 className={`px-5 py-3 text-xs text-muted font-medium ${i === 0 ? 'text-left' : 'text-right'}`}
@@ -115,6 +116,15 @@ export default function PeriodosTable({
                 >
                   {delta ? `${delta.positivo ? '↑' : '↓'} ${delta.pct.replace(/^[+-]/, '')}` : '—'}
                 </td>
+                <td className="px-5 py-3 text-right" onClick={e => e.stopPropagation()}>
+                  <div className="flex justify-end">
+                    <BotonReporte
+                      periodo={p.periodo}
+                      mesLabel={getMesNombre(p.periodo)}
+                      variant="icon"
+                    />
+                  </div>
+                </td>
               </tr>
             )
           })}
@@ -130,6 +140,7 @@ export default function PeriodosTable({
               {formatPct(margenPromedio)}
             </td>
             <td className="px-5 py-3 text-right text-muted">—</td>
+            <td className="px-5 py-3"></td>
           </tr>
         </tfoot>
       </table>
