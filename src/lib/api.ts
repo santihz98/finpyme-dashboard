@@ -249,6 +249,35 @@ class ApiClient {
       throw err
     }
   }
+
+  // ── Reportes ──────────────────────────────────────────────────────────────
+
+  async descargarReporte(periodo: string): Promise<void> {
+    const response = await fetch(
+      `${API_URL}/reportes/generar/${periodo}`,
+      {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${this.token}`,
+        },
+      }
+    )
+    if (!response.ok) throw new Error('Error generando reporte')
+
+    const blob = await response.blob()
+    const url = window.URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `reporte-finpyme-${periodo}.pdf`
+    document.body.appendChild(a)
+    a.click()
+    window.URL.revokeObjectURL(url)
+    document.body.removeChild(a)
+  }
+
+  async enviarReporteEmail(periodo: string): Promise<void> {
+    await this.request(`/reportes/enviar/${periodo}`, { method: 'POST' })
+  }
 }
 
 // Module-level singleton — re-reads localStorage token on first import
