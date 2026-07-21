@@ -8,6 +8,7 @@ import KPICard      from '@/components/KPICard'
 import RevenueChart from '@/components/RevenueChart'
 import ExpenseDonut from '@/components/ExpenseDonut'
 import InsightBox   from '@/components/InsightBox'
+import BotonReporte from '@/components/BotonReporte'
 
 import { api, ApiError }                    from '@/lib/api'
 import { formatCOP, formatPct, getDelta, getMesLabel, getSectorLabel } from '@/lib/utils'
@@ -214,6 +215,10 @@ function DashboardContent() {
                 className="absolute right-2.5 top-1/2 -translate-y-1/2 text-muted pointer-events-none"
               />
             </div>
+          )}
+
+          {mesActual && (
+            <BotonReporte periodo={mesActual.periodo} mesLabel={mesLabel} />
           )}
 
           <button
