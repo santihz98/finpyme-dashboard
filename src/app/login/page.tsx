@@ -30,8 +30,7 @@ export default function LoginPage() {
       })
 
       toast.success(`Bienvenido, ${data.usuario.nombre}`)
-      router.push('/dashboard')
-      router.refresh()
+      window.location.href = '/dashboard'
     } catch (err) {
       if (err instanceof ApiError && err.status === 401) {
         setError('Correo o contraseña incorrectos')
